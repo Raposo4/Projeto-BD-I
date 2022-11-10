@@ -1,0 +1,99 @@
+/* --------------------------- Font --------------------------- */
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("../font/Ubuntu-M.ttf") format("truetype");
+}
+
+/* --------------------------- Header --------------------------- */
+
+nav{
+    width: 90%;
+    padding: 5px;
+    padding-left: 50px;
+    display:inline-block; 
+}
+
+#nav {
+    width: 80%;
+    height: 15vh;
+    background-color: #760000;
+    color: white;
+    font-size: 2em;
+    font-family: Ubuntu;
+    line-height: 14vh;
+    padding-top: 2%;
+}
+
+.logo {
+    float: left;
+    padding: 10px;
+    width: 6%;
+    height: auto;
+}
+
+.logo img{
+    width: 100px;
+}
+
+
+  /* --------------------------- Body --------------------------- */
+
+  body{
+    background-color: #760000;
+    display: block;
+    margin: 8px;
+  }
+
+  body h1{
+    font-size: 30px;
+    color: white;
+    text-transform: uppercase;
+    font-family: "Ubuntu";
+  }
+
+.textocentro{
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px; 
+}
+
+.form{
+    text-align: center;
+}
+
+.user{
+    margin-top: 10px;
+    padding: 8px;
+    font-size: 25px;
+    text-align: center;
+}
+
+.senha{
+    margin-top: 50px;
+    padding: 8px;
+    font-size: 25px;
+    text-align: center;
+}
+
+
+.login-button {
+	background: white;
+	color: grey;
+	text-shadow: none;
+    padding: 8px;
+    font-size: 25px;
+    margin-top: 50px;
+    margin-left: 14%;
+    border: 1px solid #eee;
+}
+
+.login-button:hover {
+	background: rgb(239, 234, 234);
+	color: grey;
+	text-shadow: none;
+    padding: 8px;
+    font-size: 25px;
+    margin-top: 50px;
+    margin-left: 14%;
+}
