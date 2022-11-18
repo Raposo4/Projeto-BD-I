@@ -4,17 +4,49 @@
 <head>
     <meta charset="UTF-8" />
     <title>Owlspedagem</title>
-    <link rel="stylesheet" href="./assets/stylesheet/reset.css" />
-    <link rel="stylesheet" href="./assets/stylesheet/style.css" />
-    <script type="text/javascript" src="./assets/javascript/script.js"></script>
+    <link rel="stylesheet" href="../assets/stylesheet/reset.css" />
+    <link rel="stylesheet" href="../assets/stylesheet/style.css" />
+    <script type="text/javascript" src="../assets/javascript/script.js"></script>
 </head>
 
 <body>
+    <div class="logo">
+        <img src="../imgs/logo.png" href="index.html" />
+    </div>
     <div id="nav">
         Owlspedagem PET-SI
     </div>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Patrimônio
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Hoteis</a>
+                <a href="#">Motel</a>
+                <a href="#">Pousada</a>
+                <a href="#">Apart-Hoteis</a>
+                <a href="#">Risorts</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Recursos Humanos
+                <i class="fa fa-caret-down"></i>
+            </button>
+        </div>
+        <div class="dropdown">
+            <button class="dropbtn">Contabilidade
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Pagamentos</a>
+                <a href="#">Cobranças</a>
+            </div>
+        </div>
+        <a href="../index.html">Sair</a>
+    </div>
     <section id="table">
-        <form method="POST">
+        <form method="POST" class="form">
             <div id="input-data">
                 <input id="name" class="input-text" placeholder="Nome" type="text" required />
                 <input id="email" class="input-text" placeholder="Email" type="email" required />
