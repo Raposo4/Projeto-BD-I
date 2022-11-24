@@ -1,7 +1,7 @@
 # Notas
 Esse é um exemplo de CRUD para um sistema de hotelaria. Portanto, apresenta uma tabela para as entidades e seus respectivos atributos, contendo a possibilidade de criar, modificiar, remover e pesquisar entre os dados.
 
-# Requisitos do sistema: Sistema de Gestão de Hotelaria
+# Requisitos do sistema: Gestão de Hotelaria
 O banco de dados que você modelará deverá estar preparado para dar suporte ao desenvolvimento de
 um grande sistema de gestão de hotelaria. Abaixo seguem algumas especificações básicas sobre o
 contexto que o seu banco de dados deve considerar. Você deve atender a todos esses requisitos e trazer
