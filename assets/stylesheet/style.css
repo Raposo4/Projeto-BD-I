@@ -1,3 +1,8 @@
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
 /* --------------------------- Font --------------------------- */
 
 @font-face {
@@ -127,6 +132,10 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 /* --------------------------- Menu-Dropdown --------------------------- */
 body {
   font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  overflow-x: hidden;
 }
 
 .navbar {
@@ -191,4 +200,39 @@ body {
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+/* --------------------------- Footer --------------------------- */
+
+footer {
+  margin-top: auto;
+  background-color:  #760000;
+  color: white;
+  font-size: 20px;
+  font-family: Ubuntu;
+  line-height: 4vh;
+  padding-left: 5%;
+}
+
+.footerbar2{
+  display: inline-block;
+  overflow: hidden;
+  text-align: left;
+  width: 20%;
+}
+
+.footerbar {
+  display: inline-block;
+  text-align: right;
+  width: 70%;
+}
+
+.footerbar a {
+  color: white;
+  padding: 12px 5px;
+  text-decoration: none;
+}
+
+.footerbar a:hover {
+  background-color: #ffffff6f;
 }
