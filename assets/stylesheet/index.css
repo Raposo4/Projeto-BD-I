@@ -11,7 +11,10 @@ nav{
     width: 90%;
     padding: 5px;
     padding-left: 50px;
-    display:inline-block; 
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
 }
 
 #nav {
