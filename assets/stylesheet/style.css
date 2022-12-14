@@ -21,13 +21,10 @@ html {
     font-family: Ubuntu;
     text-align: left;
     line-height: 14vh;
-    padding-left: 11%;
-}
+} 
 .logo img{
-    padding: 1%;
-    padding-left: 5%;
+  padding-left: 10vh;
     width: 100px;
-    position: absolute;
 }
 /* --------------------------- Form --------------------------- */
 .form{
@@ -235,4 +232,29 @@ footer {
 
 .footerbar a:hover {
   background-color: #ffffff6f;
+}
+
+.container
+{
+  background-color:  #760000;
+}
+
+.feedback{
+  padding-left: 10vh;
+  font-size: xx-large;
+  background-color: lightblue;
+  align-items: center;
+  height: 10vh;
+  display: flex;
+  border: solid 5px rgb(87, 130, 165);
+  border-radius: 10px;
+}
+
+.header 
+{
+  background-color:  #760000;
+  height: 20vh;
+  gap: 5vh;
+  align-items: center;
+  display: flex;
 }

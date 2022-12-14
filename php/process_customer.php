@@ -1,5 +1,5 @@
 <?php
-require_once 'conectaBD.php';
+require_once 'connect.php';
 // Definir o BD (e a tabela)
 // Conectar ao BD (com o PHP)
 
@@ -18,7 +18,7 @@ if (!empty($_POST)) {
       $sql = "INSERT INTO cliente
                 (cpf_cliente, rg, nome, data_entrada, telefone, email)
               VALUES
-                (:cpf, :rg, :nome, :dataEntrada, :telefone, :email)";
+                (:cpf, :rg, :nome, :data_entrada, :telefone, :email)";
 
       // Preparar a SQL (pdo)
       $stmt = $pdo->prepare($sql);
@@ -28,7 +28,7 @@ if (!empty($_POST)) {
         ':cpf' => $_POST['cpf'],
         ':rg' => $_POST['rg'],
         ':nome' => $_POST['nome'],
-        ':dataEntrada' => $_POST['dataEntrada'],
+        ':data_entrada' => date("Y/m/d"),
         ':telefone' => $_POST['telefone'],
         ':email' => $_POST['email'],
       );
@@ -36,15 +36,15 @@ if (!empty($_POST)) {
       // Tentar Executar a SQL (INSERT)
       // Realizar a inserção das informações no BD (com o PHP)
       if ($stmt->execute($dados)) {
-        header("Location: index.php?msgSucesso=Cadastro realizado com sucesso!");
+        header("Location: ../html/cliente.php?msgSucesso=Cadastro realizado com sucesso!");
       }
   } catch (PDOException $e) {
       //die($e->getMessage());
-      header("Location: index.php?msgErro=Falha ao cadastrar...");
+      header("Location: ../html/cliente.php?msgErro=Falha ao cadastrar...");
   }
 }
 else {
-  header("Location: index.php?msgErro=Erro de acesso.");
+  header("Location: ../html/cliente.php?msgErro=Erro de acesso.");
 }
 die();
 

@@ -10,7 +10,7 @@
 
 <nav>
     <div class="logo">
-        <img src="./imgs/logo.png" href="index.html" />
+        <img src="./imgs/logo.png" href="index.php" />
     </div>
     <div id="nav">
         Owlspedagem PET-SI
@@ -21,12 +21,12 @@
     <div class="textocentro">
         <h1>Confirme as credenciais para login</h1>
     </div>
-    <form class="form" action="php/login.php" method="post">
+    <form class="form" action="html/hotel.php">
         <input class="user" type="text" placeholder="Usuário">
         <br>
         <input class="senha" type="password" placeholder="Senha">
         <br>
-        <input class="login-button" type="submit" value="Login">
+        <input  class="login-button" type="submit" value="Login">
     </form>
     </body>
 

@@ -10,11 +10,28 @@
 </head>
 
 <body>
-    <div class="logo">
-        <img src="../imgs/logo.png" href="index.html" />
+    <div class="container">
+        <div class="feedback">
+            <?php if (!empty($_GET['msgErro'])) { ?>
+                <div class="alert alert-warning" role="alert">
+                <?php echo $_GET['msgErro']; ?>
+                </div>
+            <?php } ?>
+
+            <?php if (!empty($_GET['msgSucesso'])) { ?>
+                <div class="alert alert-success" role="alert">
+                <?php echo $_GET['msgSucesso']; ?>
+                </div>
+            <?php } ?>
+        </div>
     </div>
-    <div id="nav">
-        Owlspedagem PET-SI - Clientes
+    <div class="header">
+        <div class="logo">
+            <img src="../imgs/logo.png" href="index.php" />
+        </div>
+        <div id="nav">
+            Owlspedagem PET-SI - Clientes
+        </div>
     </div>
     <div class="navbar">
         <div class="dropdown">
@@ -22,7 +39,7 @@
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content">
-                <a href="hotel.html">Hoteis</a>
+                <a href="hotel.php">Hoteis</a>
                 <a href="#">Motel</a>
                 <a href="#">Pousada</a>
                 <a href="#">Apart-Hoteis</a>
@@ -42,26 +59,26 @@
             </div>
         </div>
         <div class="dropdown">
-            <button class="dropbtn" onclick="location.href='./cliente.html';">Clientes</button>
+            <button class="dropbtn" onclick="location.href='./cliente.php';">Clientes</button>
         </div>
         <div class="dropdown">
             <button class="dropbtn" onclick="location.href='#';">Funcionários</button>
         </div>
         <div class="dropdown">
-            <button class="dropbtn" onclick="location.href='../index.html';">Sair</button>
+            <button class="dropbtn" onclick="location.href='../index.php';">Sair</button>
         </div>
     </div>
     
     
     <section id="table">
-        <form action="../php/processaCliente.php" method="post" class="form">
+        <form action="../php/process_customer.php" method="post" class="form">
             <div id="input-data">
-                <input id="name" class="input-text" placeholder="Nome" type="text" required />
-                <input id="RG" class="input-text" placeholder="RG" type="number" required />
-                <input id="CPF" class="input-text" placeholder="CPF" type="number" required />
-                <input id="Data_Entrada" class="input-text" placeholder="País" type="text" required />
-                <input id="Telefone" class="input-text" placeholder="Telefone" type="number" required />
-                <input id="E-mail" class="input-text" placeholder="Email" type="email" required />
+                <input id="nome" name="nome" class="input-text" placeholder="Nome" type="text" required />
+                <input id="rg" name="rg" class="input-text" placeholder="RG" type="number" required />
+                <input id="cpf" name="cpf" class="input-text" placeholder="CPF" type="number" required />
+                <input id="pais" name="pais" class="input-text" placeholder="País" type="text" required />
+                <input id="telefone" name="telefone" class="input-text" placeholder="Telefone" type="number" required />
+                <input id="email" name="email" class="input-text" placeholder="Email" type="email" required />
                 <input class="input-btn" type="submit" value="Cadastrar" />
             </div>
         </form>
