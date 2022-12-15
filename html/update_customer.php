@@ -165,6 +165,7 @@ if (!empty($_POST)) {
                 <th>Data de entrada</th>
                 <th>Telefone</th>
                 <th>Email</th>
+                <th>Excluir</th>
             </tr>
         </table>
     </section>

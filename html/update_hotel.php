@@ -205,6 +205,7 @@ if (!empty($_POST)) {
                 <th>Categoria</th>
                 <th>Café</th>
                 <th>Wifi</th>
+                <th>Excluir</th>
             </tr>
         </table>
     </section>

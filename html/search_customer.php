@@ -29,16 +29,8 @@ if (!empty($_POST)) {
       $sth->bindParam(1, $d);
       $sth->execute();
 
-      /*while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
-        echo "<tr>";
-        echo "<td>" . $row['nome'] . "</td>";
-        echo "<td>" . $row['cpf_cliente'] . "</td>";
-        echo "<td>" . $row['rg'] . "</td>";
-        echo "<td>" . $row['telefone'] . "</td>";
-        echo "<td>" . $row['email'] . "</td>";
-        echo "<td>" . $row['data_entrada'] . "</td>";
-        echo "</tr>";
-      }*/
+      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
+
 
   } catch (PDOException $e) {
       //die($e->getMessage());
@@ -180,8 +172,9 @@ else {
                 <th>Telefone</th>
                 <th>Email</th>
                 <th>Data de entrada</th>
+                <th>Excluir</th>
             </tr>
-            <?php while ($row = $sth->fetch(PDO::FETCH_ASSOC)) { ?>
+            <?php foreach($tabela as $row) { ?>
               <tr>
               <td><?php echo $row['nome']; ?></td>
               <td><?php echo $row['cpf_cliente']; ?></td>
@@ -189,7 +182,7 @@ else {
               <td><?php echo $row['telefone']; ?></td>
               <td><?php echo $row['email']; ?></td>
               <td><?php echo $row['data_entrada']; ?></td>
-              <td><a href="**">X</a></td>
+              <td> <a href="../php/delete_customer.php?id=<?php echo $row['cpf_cliente']; ?>">X</a></td> 
               </tr>
             <?php } ?>
         </table>

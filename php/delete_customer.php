@@ -14,18 +14,18 @@ if (!empty($_GET['id'])) {
   // Obter as informações do formulário ($_POST)
   try {
       // Montar a SQL (pgsql)
-      $sql = "DELETE FROM hotel
-              WHERE id_hotel = :id";
+      $sql = "DELETE FROM cliente
+              WHERE cpf_cliente = :id";
 
       $sth = $pdo->prepare($sql);
 
       if ($sth->execute(array(':id' => $_GET['id']))) {
-        header("Location: ../html/hotel.php?msgSucesso=Hotel deletado com sucesso!");
+        header("Location: ../html/cliente.php?msgSucesso=Cliente deletado com sucesso!");
       }
 
   } catch (PDOException $e) {
       die($e->getMessage());
-      header("Location: ../html/search_hotel.php?msgErro=Falha ao deletar...");
+      header("Location: ../html/search_customer.php?msgErro=Falha ao deletar...");
   }
 }//else {
   //header("Location: ../html/hotel.php?msgErro=Erro de acesso.");
