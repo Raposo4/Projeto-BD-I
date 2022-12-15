@@ -1,3 +1,56 @@
+<?php
+require_once 'connect.php';
+// Definir o BD (e a tabela)
+// Conectar ao BD (com o PHP)
+
+/*
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
+*/
+
+if (!empty($_POST)) {
+  // Está chegando dados por POST e então posso tentar inserir no banco
+  // Obter as informações do formulário ($_POST)
+  try {
+    // Preparar as informações
+
+      $column = $_POST['atributo'];
+      $d = $_POST['value_data'];
+
+      // Montar a SQL (pgsql)
+      $sql = "SELECT * FROM cliente
+              WHERE [column] = ?";
+
+      $sql = str_replace('[column]', $column, $sql);     
+
+      $sth = $pdo->prepare($sql);
+      $sth->bindParam(1, $d);
+      $sth->execute();
+
+      /*while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
+        echo "<tr>";
+        echo "<td>" . $row['nome'] . "</td>";
+        echo "<td>" . $row['cpf_cliente'] . "</td>";
+        echo "<td>" . $row['rg'] . "</td>";
+        echo "<td>" . $row['telefone'] . "</td>";
+        echo "<td>" . $row['email'] . "</td>";
+        echo "<td>" . $row['data_entrada'] . "</td>";
+        echo "</tr>";
+      }*/
+
+  } catch (PDOException $e) {
+      //die($e->getMessage());
+      header("Location: ../html/cliente.php?msgErro=Falha ao buscar...");
+  }
+}
+else {
+  header("Location: ../html/cliente.php?msgErro=Erro de acesso.");
+}
+
+// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -100,16 +153,25 @@
             <input class="input-btn" type="submit" value="Buscar" />
         </div>
     </form>
-
         <table id="myTable">
             <tr id="0">
                 <th>Nome</th>
-                <th>RG</th>
                 <th>CPF</th>
-                <th>Data de entrada</th>
+                <th>RG</th>
                 <th>Telefone</th>
                 <th>Email</th>
+                <th>Data de entrada</th>
             </tr>
+            <?php while ($row = $sth->fetch(PDO::FETCH_ASSOC)) { ?>
+              <tr>
+              <td><?php echo $row['nome']; ?></td>
+              <td><?php echo $row['cpf_cliente']; ?></td>
+              <td><?php echo $row['rg']; ?></td>
+              <td><?php echo $row['telefone']; ?></td>
+              <td><?php echo $row['email']; ?></td>
+              <td><?php echo $row['data_entrada']; ?></td>
+              </tr>
+            <?php } ?>
         </table>
     </section>
 </body>
