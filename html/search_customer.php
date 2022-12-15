@@ -1,5 +1,5 @@
 <?php
-require_once 'connect.php';
+require_once '../php/connect.php';
 // Definir o BD (e a tabela)
 // Conectar ao BD (com o PHP)
 
@@ -137,7 +137,7 @@ else {
         </form>
 
     </br>
-    <form action="../php/search_customer.php" method="post" class="form">
+    <form action="../html/search_customer.php" method="post" class="form">
         <div id="input-data">
           <select name="atributo" id="atributo" class="input-text">
                 <option value="">Atributo:</option>

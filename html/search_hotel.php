@@ -1,3 +1,44 @@
+<?php
+require_once '../php/connect.php';
+// Definir o BD (e a tabela)
+// Conectar ao BD (com o PHP)
+
+/*
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
+*/
+
+if (!empty($_POST)) {
+  // Está chegando dados por POST e então posso tentar inserir no banco
+  // Obter as informações do formulário ($_POST)
+  try {
+    // Preparar as informações
+
+      $column = $_POST['atributo'];
+      $d = $_POST['value_data'];
+
+      // Montar a SQL (pgsql)
+      $sql = "SELECT * FROM hotel
+              WHERE [column] = ?";
+
+      $sql = str_replace('[column]', $column, $sql);     
+
+      $sth = $pdo->prepare($sql);
+      $sth->bindParam(1, $d);
+      $sth->execute();
+
+  } catch (PDOException $e) {
+      die($e->getMessage());
+      header("Location: ../html/cliente.php?msgErro=Falha ao buscar...");
+  }
+}
+else {
+  header("Location: ../html/cliente.php?msgErro=Erro de acesso.");
+}
+
+// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -126,7 +167,7 @@
 
         <table id="myTable">
             <tr id="0">
-            <th>ID</th>
+                <th>ID</th>
                 <th>Nome</th>
                 <th>Caixa</th>
                 <th>Data Abertura</th>
@@ -143,6 +184,26 @@
                 <th>Café</th>
                 <th>Wifi</th>
             </tr>
+            <?php while ($row = $sth->fetch(PDO::FETCH_ASSOC)) { ?>
+              <tr>
+              <td><?php echo $row['id_hotel']; ?></td>
+              <td><?php echo $row['nome_fantasia']; ?></td>
+              <td><?php echo $row['caixa_total']; ?></td>
+              <td><?php echo $row['data_abertura']; ?></td>
+              <td><?php echo $row['loc_pais']; ?></td>
+              <td><?php echo $row['loc_estado']; ?></td>
+              <td><?php echo $row['loc_cidade']; ?></td>
+              <td><?php echo $row['loc_complemento']; ?></td>
+              <td><?php echo $row['loc_numero']; ?></td>
+              <td><?php echo $row['valor_aluguel']; ?></td>
+              <td><?php echo $row['num_funcionarios']; ?></td>
+              <td><?php echo $row['num_hospedes']; ?></td>
+              <td><?php echo $row['ocupacao_maxima']; ?></td>
+              <td><?php echo $row['categoria']; ?></td>
+              <td><?php echo $row['possui_cafe']; ?></td>
+              <td><?php echo $row['possui_wifi']; ?></td>
+              </tr>
+            <?php } ?>
         </table>
     </section>
 </body>
