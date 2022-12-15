@@ -76,7 +76,7 @@
                 <input id="nome" name="nome" class="input-text" placeholder="Nome" type="text" required />
                 <input id="rg" name="rg" class="input-text" placeholder="RG" type="number" required />
                 <input id="cpf" name="cpf" class="input-text" placeholder="CPF" type="number" required />
-                <input id="pais" name="pais" class="input-text" placeholder="País" type="text" required />
+                <!-- <input id="pais" name="pais" class="input-text" placeholder="País" type="text" required />-->
                 <input id="telefone" name="telefone" class="input-text" placeholder="Telefone" type="number" required />
                 <input id="email" name="email" class="input-text" placeholder="Email" type="email" required />
                 <input class="input-btn" type="submit" value="Cadastrar" />

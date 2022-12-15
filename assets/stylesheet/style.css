@@ -244,10 +244,8 @@ footer {
   font-size: xx-large;
   background-color: lightblue;
   align-items: center;
-  height: 10vh;
+  max-height: fit-content;
   display: flex;
-  border: solid 5px rgb(87, 130, 165);
-  border-radius: 10px;
 }
 
 .header 

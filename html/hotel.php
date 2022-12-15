@@ -30,7 +30,7 @@
             <img src="../imgs/logo.png" href="index.php" />
         </div>
         <div id="nav">
-            Owlspedagem PET-SI - Clientes
+            Owlspedagem PET-SI - Hoteis
         </div>
     </div>
     <div class="navbar">
