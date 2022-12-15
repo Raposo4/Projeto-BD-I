@@ -70,28 +70,30 @@
     </div>
 
     <section id="table">
-        <form action="../php/processaHotel.php" method="post" class="form">
+        <form action="../php/process_hotel.php" method="post" class="form">
             <div id="input-data">
-                <input id="name" class="input-text" placeholder="Nome" type="text" required />
-                <input id="caixa" class="input-text" placeholder="Caixa" type="number" min="0.00" max="10000.00" step="0.01"  required />
-                <input id="Data_Abertura" class="input-text" placeholder="Data de abertura" type="date" required />
-                <input id="Pais" class="input-text" placeholder="País" type="text" required />
-                <input id="Estado" class="input-text" placeholder="Estado" type="text" required />
-                <input id="Cidade" class="input-text" placeholder="Cidade" type="text" required />
-                <input id="Rua" class="input-text" placeholder="Rua" type="text" required />
-                <input id="Aluguel" class="input-text" placeholder="Valor aluguel" type="text" required />
-                <input id="Funcionarios" class="input-text" placeholder="Número funcionários" type="number" required />
-                <input id="Clientes" class="input-text" placeholder="Número hospedes" type="number" required />
-                <input id="Ocupacao-Max" class="input-text" placeholder="Ocupação Máxima" type="number" required />
-                <select name="Cafe" id="Cafe" class="input-text">
+                <input id="name" name="nome_fantasia" class="input-text" placeholder="Nome" type="text" required />
+                <input id="caixa" name="caixa_total" class="input-text" placeholder="Caixa" type="number" min="0.00" max="1000000.00" step="0.01"  required />
+                <input id="Data_Abertura" name="data_abertura" class="input-text" placeholder="Data de abertura" type="date" required />
+                <input id="Pais" name="loc_pais" class="input-text" placeholder="País" type="text" required />
+                <input id="Estado" name="loc_estado" class="input-text" placeholder="Estado" type="text" required />
+                <input id="Cidade" name="loc_cidade" class="input-text" placeholder="Cidade" type="text" required />
+                <input id="Rua" name="loc_complemento" class="input-text" placeholder="Rua" type="text" required />
+                <input id="Número" name="loc_numero" class="input-text" placeholder="Número" type="number" required />
+                <input id="Aluguel" name="valor_aluguel" class="input-text" placeholder="Valor aluguel" type="text" required />
+                <input id="Funcionarios" name="num_funcionarios" class="input-text" placeholder="Número funcionários" type="number" required />
+                <input id="Clientes" name="num_hospedes" class="input-text" placeholder="Número hospedes" type="number" required />
+                <input id="Ocupacao-Max" name="ocupacao_maxima" class="input-text" placeholder="Ocupação Máxima" type="number" required />
+                <input id="Categoria" name="categoria" class="input-text" placeholder="Categoria" type="text" required />
+                <select name="possui_cafe" id="Cafe" class="input-text">
                     <option value="">Tem café?</option>
-                    <option value="TRUE">Sim</option>
-                    <option value="FALSE">Não</option>
+                    <option value="T">Sim</option>
+                    <option value="F">Não</option>
                   </select>
-                 <select name="Wifi" id="Wifi" class="input-text">
+                 <select name="possui_wifi" id="Wifi" class="input-text">
                     <option value="">Tem wifi?</option>
-                    <option value="TRUE">Sim</option>
-                    <option value="FALSE">Não</option>
+                    <option value="T">Sim</option>
+                    <option value="F">Não</option>
                   </select> 
                 <input class="input-btn" type="submit" value="Enviar" />
             </div>
@@ -108,13 +110,14 @@
                     <option value="loc_estado">Estado</option>
                     <option value="loc_pais">País</option>
                     <option value="loc_numero">Número</option>
-                    <option value="loc_complemer">Rua</option>
+                    <option value="loc_complemento">Rua</option>
                     <option value="valor_aluguel">Aluguel</option>
-                    <option value="num_funcionar">Num Funcionários</option>
+                    <option value="num_funcionarios">Num Funcionários</option>
                     <option value="num_hospedes">Num Hospedes</option>
-                    <option value="ocupacao_maxi">Ocupação</option>
+                    <option value="ocupacao_maxima">Ocupação</option>
                     <option value="possui_cafe">Café?</option>
                     <option value="possui_wifi">Wifi?</option>
+                    <option value="categoria">Categoria</option>
                   </select> 
                   <input id="valor" class="input-text" placeholder="Valor" type="text" required />
                 <input class="input-btn" type="submit" value="Buscar" />
