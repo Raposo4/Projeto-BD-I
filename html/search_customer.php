@@ -20,7 +20,8 @@ if (!empty($_POST)) {
 
       // Montar a SQL (pgsql)
       $sql = "SELECT * FROM cliente
-              WHERE [column] = ?";
+              WHERE [column] = ?
+              ORDER BY nome ASC";
 
       $sql = str_replace('[column]', $column, $sql);     
 
@@ -153,6 +154,24 @@ else {
             <input class="input-btn" type="submit" value="Buscar" />
         </div>
     </form>
+    </br>
+    <form action="../html/update_customer.php" method="post" class="form">
+        <div id="input-data">
+            <input id="id" class="input-text" placeholder="CPF" name="id" type="text" required />
+          <select name="atributo" id="atributo" class="input-text">
+                <option value="">Atributo:</option>
+                <option value="nome">Nome</option>
+                <option value="rg">RG</option>
+                <option value="cpf_cliente">CPF</option>
+                <option value="data_entrada">Data Entrada</option>
+                <option value="telefone">Telefone</option>
+                <option value="email">Email</option>
+                <option value="quarto">Quarto</option>
+              </select> 
+              <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
+            <input class="input-btn" type="submit" value="Atualizar" />
+        </div>
+    </form>
         <table id="myTable">
             <tr id="0">
                 <th>Nome</th>
@@ -170,6 +189,7 @@ else {
               <td><?php echo $row['telefone']; ?></td>
               <td><?php echo $row['email']; ?></td>
               <td><?php echo $row['data_entrada']; ?></td>
+              <td><a href="**">X</a></td>
               </tr>
             <?php } ?>
         </table>

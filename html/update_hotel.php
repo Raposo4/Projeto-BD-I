@@ -1,47 +1,40 @@
 <?php
 require_once '../php/connect.php';
-// Definir o BD (e a tabela)
-// Conectar ao BD (com o PHP)
-
-/*
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
-*/
 
 if (!empty($_POST)) {
-  // Está chegando dados por POST e então posso tentar inserir no banco
-  // Obter as informações do formulário ($_POST)
+
   try {
     // Preparar as informações
 
+      $id = $_POST['id'];
       $column = $_POST['atributo'];
       $d = $_POST['value_data'];
 
       // Montar a SQL (pgsql)
-      $sql = "SELECT * FROM hotel
-              WHERE [column] = ?
-              ORDER BY id_hotel ASC";
+      $sql = "UPDATE hotel SET [column] = ?
+              WHERE id_hotel = ?";
 
       $sql = str_replace('[column]', $column, $sql);     
 
       $sth = $pdo->prepare($sql);
       $sth->bindParam(1, $d);
-      $sth->execute();
+      $sth->bindParam(2, $id);
+      if ($sth->execute()) {
+        header("Location: ../html/update_hotel.php?msgSucesso=Atualização realizada com sucesso!");
+      }
 
-      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
 
   } catch (PDOException $e) {
       die($e->getMessage());
-      header("Location: ../html/search_hotel.php?msgErro=Falha ao buscar...");
+      header("Location: ../html/update_hotel.php?msgErro=Falha ao atualizar...");
   }
 }
-else {
-  header("Location: ../html/search_hotel.php?msgErro=Erro de acesso.");
-}
+//else {
+  //header("Location: ../html/update_hotel.php?msgErro=Erro de acesso.");
+///}
 
-// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -196,7 +189,7 @@ else {
 
         <table id="myTable">
             <tr id="0">
-                <th>ID</th>
+            <th>ID</th>
                 <th>Nome</th>
                 <th>Caixa</th>
                 <th>Data Abertura</th>
@@ -212,31 +205,7 @@ else {
                 <th>Categoria</th>
                 <th>Café</th>
                 <th>Wifi</th>
-                <th>Excluir</th>
             </tr>
-            <form action="../php/delete_hotel.php" method="post" class="form"> 
-            <?php foreach($tabela as $row) { ?> 
-              <tr> 
-              <td><?php echo $row['id_hotel']; ?></td>
-              <td><?php echo $row['nome_fantasia']; ?></td>
-              <td><?php echo $row['caixa_total']; ?></td> 
-              <td><?php echo $row['data_abertura']; ?></td> 
-              <td><?php echo $row['loc_pais']; ?></td> 
-              <td><?php echo $row['loc_estado']; ?></td> 
-              <td><?php echo $row['loc_cidade']; ?></td> 
-              <td><?php echo $row['loc_complemento']; ?></td> 
-              <td><?php echo $row['loc_numero']; ?></td> 
-              <td><?php echo $row['valor_aluguel']; ?></td> 
-              <td><?php echo $row['num_funcionarios']; ?></td> 
-              <td><?php echo $row['num_hospedes']; ?></td> 
-              <td><?php echo $row['ocupacao_maxima']; ?></td> 
-              <td><?php echo $row['categoria']; ?></td> 
-              <td><?php echo $row['possui_cafe']; ?></td> 
-              <td><?php echo $row['possui_wifi']; ?></td> 
-              <td> <a href="../php/delete_hotel.php?id=<?php echo $row['id_hotel']; ?>">X</a></td> 
-              </tr> 
-            <?php } ?> 
-         </form>
         </table>
     </section>
 </body>

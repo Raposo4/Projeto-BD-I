@@ -123,6 +123,32 @@
                 <input class="input-btn" type="submit" value="Buscar" />
             </div>
         </form>
+        </br>
+        <form action="../html/update_hotel.php" method="post" class="form">
+            <div id="input-data">
+            <input id="id" class="input-text" placeholder="Id" name="id" type="text" required />
+              <select name="atributo" id="Atributo" class="input-text">
+                    <option value="">Atributo:</option>
+                    <option value="nome_fantasia">Nome</option>
+                    <option value="caixa_total">Caixa</option>
+                    <option value="data_abertura">Data de abertura</option>
+                    <option value="loc_cidade">Cidade</option>
+                    <option value="loc_estado">Estado</option>
+                    <option value="loc_pais">País</option>
+                    <option value="loc_numero">Número</option>
+                    <option value="loc_complemento">Rua</option>
+                    <option value="valor_aluguel">Aluguel</option>
+                    <option value="num_funcionarios">Num Funcionários</option>
+                    <option value="num_hospedes">Num Hospedes</option>
+                    <option value="ocupacao_maxima">Ocupação</option>
+                    <option value="possui_cafe">Café?</option>
+                    <option value="possui_wifi">Wifi?</option>
+                    <option value="categoria">Categoria</option>
+                  </select> 
+                  <input id="valor" name="value_data" class="input-text" placeholder="Valor" type="text" required />
+                <input class="input-btn" type="submit" value="Atualizar" />
+            </div>
+        </form>
 
         <table id="myTable">
             <tr id="0">

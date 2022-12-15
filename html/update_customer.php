@@ -1,3 +1,41 @@
+<?php
+require_once '../php/connect.php';
+
+if (!empty($_POST)) {
+
+  try {
+    // Preparar as informações
+
+      $id = $_POST['id'];
+      $column = $_POST['atributo'];
+      $d = $_POST['value_data'];
+
+      // Montar a SQL (pgsql)
+      $sql = "UPDATE cliente SET [column] = ?
+              WHERE cpf_cliente = ?";
+
+      $sql = str_replace('[column]', $column, $sql);     
+
+      $sth = $pdo->prepare($sql);
+      $sth->bindParam(1, $d);
+      $sth->bindParam(2, $id);
+
+      if ($sth->execute()) {
+        header("Location: ../html/update_customer.php?msgSucesso=Atualização realizada com sucesso!");
+      }
+
+  } catch (PDOException $e) {
+      die($e->getMessage());
+      header("Location: ../html/update_customer.php?msgErro=Falha ao atualizar...");
+  }
+}
+//else {
+  //header("Location: ../html/update_customer.php?msgErro=Erro de acesso.");
+//}
+
+// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
