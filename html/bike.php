@@ -1,3 +1,16 @@
+<?php
+require_once '../php/connect.php';
+
+      $sql = "SELECT * FROM uso_da_bike
+              ORDER BY id_bike ASC";
+
+
+      $sth = $pdo->prepare($sql);
+      $sth->execute();
+
+      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -126,6 +139,15 @@
                 <th>Data de devolução</th>
                 <th>Excluir</th>
             </tr>
+            <?php foreach($tabela as $row) { ?>
+              <tr>
+              <td><?php echo $row['id_bike']; ?></td>
+              <td><?php echo $row['cpf_cliente']; ?></td>
+              <td><?php echo $row['data_retirada']; ?></td>
+              <td><?php echo $row['data_devolucao']; ?></td>
+              <td> <a href="../php/delete_bike.php?id=<?php echo $row['id_bike']; ?>">X</a></td> 
+              </tr>
+            <?php } ?>
         </table>
     </section>
 </body>

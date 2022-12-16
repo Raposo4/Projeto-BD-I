@@ -224,7 +224,6 @@ else {
                 <th>Wifi</th>
                 <th>Excluir</th>
             </tr>
-            <form action="../php/delete_hotel.php" method="post" class="form"> 
             <?php foreach($tabela as $row) { ?> 
               <tr> 
               <td><?php echo $row['id_hotel']; ?></td>

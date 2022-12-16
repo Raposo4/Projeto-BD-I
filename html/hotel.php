@@ -1,3 +1,15 @@
+<?php
+require_once '../php/connect.php';
+
+      $sql = "SELECT * FROM hotel
+              ORDER BY id_hotel ASC";
+
+
+      $sth = $pdo->prepare($sql);
+      $sth->execute();
+
+      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -180,6 +192,27 @@
                 <th>Wifi</th>
                 <th>Excluir</th>
             </tr>
+            <?php foreach($tabela as $row) { ?> 
+              <tr> 
+              <td><?php echo $row['id_hotel']; ?></td>
+              <td><?php echo $row['nome_fantasia']; ?></td>
+              <td><?php echo $row['caixa_total']; ?></td> 
+              <td><?php echo $row['data_abertura']; ?></td> 
+              <td><?php echo $row['loc_pais']; ?></td> 
+              <td><?php echo $row['loc_estado']; ?></td> 
+              <td><?php echo $row['loc_cidade']; ?></td> 
+              <td><?php echo $row['loc_complemento']; ?></td> 
+              <td><?php echo $row['loc_numero']; ?></td> 
+              <td><?php echo $row['valor_aluguel']; ?></td> 
+              <td><?php echo $row['num_funcionarios']; ?></td> 
+              <td><?php echo $row['num_hospedes']; ?></td> 
+              <td><?php echo $row['ocupacao_maxima']; ?></td> 
+              <td><?php echo $row['categoria']; ?></td> 
+              <td><?php echo $row['possui_cafe']; ?></td> 
+              <td><?php echo $row['possui_wifi']; ?></td> 
+              <td> <a href="../php/delete_hotel.php?id=<?php echo $row['id_hotel']; ?>">X</a></td> 
+              </tr> 
+            <?php } ?> 
         </table>
     </section>
 </body>

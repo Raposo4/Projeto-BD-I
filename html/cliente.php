@@ -1,3 +1,17 @@
+<?php
+require_once '../php/connect.php';
+
+      $sql = "SELECT * FROM cliente
+              ORDER BY nome ASC";
+
+
+      $sth = $pdo->prepare($sql);
+      $sth->execute();
+
+      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -139,6 +153,17 @@
                 <th>Email</th>
                 <th>Excluir</th>
             </tr>
+            <?php foreach($tabela as $row) { ?>
+              <tr>
+              <td><?php echo $row['nome']; ?></td>
+              <td><?php echo $row['cpf_cliente']; ?></td>
+              <td><?php echo $row['rg']; ?></td>
+              <td><?php echo $row['telefone']; ?></td>
+              <td><?php echo $row['email']; ?></td>
+              <td><?php echo $row['data_entrada']; ?></td>
+              <td> <a href="../php/delete_customer.php?id=<?php echo $row['cpf_cliente']; ?>">X</a></td> 
+              </tr>
+            <?php } ?>
         </table>
     </section>
 </body>
