@@ -1,35 +1,31 @@
 <?php
+/****codigo para pesquisar em hotel****/
+//conecta ao banco
 require_once '../php/connect.php';
-// Definir o BD (e a tabela)
-// Conectar ao BD (com o PHP)
-
-/*
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
-*/
 
 if (!empty($_POST)) {
-  // Está chegando dados por POST e então posso tentar inserir no banco
-  // Obter as informações do formulário ($_POST)
   try {
-    // Preparar as informações
 
-      $column = $_POST['atributo'];
-      $d = $_POST['value_data'];
+    //recebe o atributo que vai ser usado na busca
+    $column = $_POST['atributo'];
+    //recebe o valor que vai ser usado na busca
+    $d = $_POST['value_data'];
 
-      // Montar a SQL (pgsql)
-      $sql = "SELECT * FROM hotel
-              WHERE [column] = ?
-              ORDER BY id_hotel ASC";
+    //codigo sql
+    $sql = "SELECT * FROM hotel
+            WHERE [column] = ?
+            ORDER BY id_hotel ASC";
 
-      $sql = str_replace('[column]', $column, $sql);     
+    //muda o sql pra usar o atributo recebido em $column
+    $sql = str_replace('[column]', $column, $sql);     
 
-      $sth = $pdo->prepare($sql);
-      $sth->bindParam(1, $d);
-      $sth->execute();
+    //prepara e executa o codigo
+    $sth = $pdo->prepare($sql);
+    $sth->bindParam(1, $d); //usa o valor recebido em $d na consulta
+    $sth->execute();
 
-      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
+    //guarda o resultado da query
+    $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
 
   } catch (PDOException $e) {
       die($e->getMessage());
@@ -39,8 +35,6 @@ if (!empty($_POST)) {
 else {
   header("Location: ../html/search_hotel.php?msgErro=Erro de acesso.");
 }
-
-// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">

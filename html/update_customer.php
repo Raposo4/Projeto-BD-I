@@ -1,39 +1,38 @@
 <?php
+/****codigo para atualizar em cliente****/
+//conecta ao banco
 require_once '../php/connect.php';
 
 if (!empty($_POST)) {
-
   try {
-    // Preparar as informações
+    //recebe o id que vai ser usado na busca
+    $id = $_POST['id'];
+    //recebe o atributo que vai ser usadosna busca
+    $column = $_POST['atributo'];
+    //recebe o valor que vai ser usado na busca
+    $d = $_POST['value_data'];
 
-      $id = $_POST['id'];
-      $column = $_POST['atributo'];
-      $d = $_POST['value_data'];
+    //codigo sql
+    $sql = "UPDATE cliente SET [column] = ?
+            WHERE cpf_cliente = ?";
 
-      // Montar a SQL (pgsql)
-      $sql = "UPDATE cliente SET [column] = ?
-              WHERE cpf_cliente = ?";
+    //muda o sql pra usar o atributo recebido em $column
+    $sql = str_replace('[column]', $column, $sql);     
 
-      $sql = str_replace('[column]', $column, $sql);     
+    //prepara e executa o codigo
+    $sth = $pdo->prepare($sql);
+    $sth->bindParam(1, $d); //usa o valor recebido em $d na consulta
+    $sth->bindParam(2, $id); //usa o valor recebido em $id na consulta
 
-      $sth = $pdo->prepare($sql);
-      $sth->bindParam(1, $d);
-      $sth->bindParam(2, $id);
-
-      if ($sth->execute()) {
-        header("Location: ../html/update_customer.php?msgSucesso=Atualização realizada com sucesso!");
-      }
+    if ($sth->execute()) {
+        header("Location: ../html/cliente.php?msgSucesso=Atualização realizada com sucesso!");
+    }
 
   } catch (PDOException $e) {
       die($e->getMessage());
-      header("Location: ../html/update_customer.php?msgErro=Falha ao atualizar...");
+      header("Location: ../html/cliente.php?msgErro=Falha ao atualizar...");
   }
 }
-//else {
-  //header("Location: ../html/update_customer.php?msgErro=Erro de acesso.");
-//}
-
-// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
 ?>
 
 <!DOCTYPE html>
@@ -160,8 +159,8 @@ if (!empty($_POST)) {
         <table id="myTable">
             <tr id="0">
                 <th>Nome</th>
-                <th>RG</th>
                 <th>CPF</th>
+                <th>RG</th>
                 <th>Data de entrada</th>
                 <th>Telefone</th>
                 <th>Email</th>

@@ -1,17 +1,20 @@
 <?php
+/****codigo para mostrar tabela cliente****/
+//conecta ao banco
 require_once '../php/connect.php';
 
-      $sql = "SELECT * FROM cliente
-              ORDER BY nome ASC";
+    //codigo sql
+    $sql = "SELECT * FROM cliente
+            ORDER BY nome ASC";
 
+    //prepara e executa o codigo
+    $sth = $pdo->prepare($sql);
+    $sth->execute();
 
-      $sth = $pdo->prepare($sql);
-      $sth->execute();
-
-      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
-
-
+    //guarda o resultado da query
+    $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -146,8 +149,8 @@ require_once '../php/connect.php';
         <table id="myTable">
             <tr id="0">
                 <th>Nome</th>
-                <th>RG</th>
                 <th>CPF</th>
+                <th>RG</th>
                 <th>Data de entrada</th>
                 <th>Telefone</th>
                 <th>Email</th>

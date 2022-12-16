@@ -1,15 +1,20 @@
 <?php
+/****codigo para mostrar tabela hotel****/
+//conecta ao banco
 require_once '../php/connect.php';
 
-      $sql = "SELECT * FROM hotel
-              ORDER BY id_hotel ASC";
+    //codigo sql
+    $sql = "SELECT * FROM hotel
+            ORDER BY id_hotel ASC";
 
+    //prepara e executa o codigo
+    $sth = $pdo->prepare($sql);
+    $sth->execute();
 
-      $sth = $pdo->prepare($sql);
-      $sth->execute();
-
-      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
+    //guarda o resultado da query
+    $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 

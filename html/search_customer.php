@@ -1,36 +1,31 @@
 <?php
+/****codigo para pesquisar em cliente****/
+//conecta ao banco
 require_once '../php/connect.php';
-// Definir o BD (e a tabela)
-// Conectar ao BD (com o PHP)
-
-/*
-echo '<pre>';
-print_r($_POST);
-echo '</pre>';
-*/
 
 if (!empty($_POST)) {
-  // Está chegando dados por POST e então posso tentar inserir no banco
-  // Obter as informações do formulário ($_POST)
   try {
-    // Preparar as informações
+    
+    //recebe o atributo que vai ser usado na busca
+    $column = $_POST['atributo'];
+    //recebe o valor que vai ser usado na busca
+    $d = $_POST['value_data'];
 
-      $column = $_POST['atributo'];
-      $d = $_POST['value_data'];
+    //codigo sql
+    $sql = "SELECT * FROM cliente
+            WHERE [column] = ?
+            ORDER BY nome ASC";
 
-      // Montar a SQL (pgsql)
-      $sql = "SELECT * FROM cliente
-              WHERE [column] = ?
-              ORDER BY nome ASC";
+    //muda o sql pra usar o atributo recebido em $column
+    $sql = str_replace('[column]', $column, $sql);     
 
-      $sql = str_replace('[column]', $column, $sql);     
+    //prepara e executa o codigo
+    $sth = $pdo->prepare($sql);
+    $sth->bindParam(1, $d); //usa o valor recebido em $d na consulta
+    $sth->execute();
 
-      $sth = $pdo->prepare($sql);
-      $sth->bindParam(1, $d);
-      $sth->execute();
-
-      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
-
+    //guarda o resultado da query
+    $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
 
   } catch (PDOException $e) {
       //die($e->getMessage());
@@ -41,7 +36,6 @@ else {
   header("Location: ../html/cliente.php?msgErro=Erro de acesso.");
 }
 
-// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
 ?>
 
 <!DOCTYPE html>

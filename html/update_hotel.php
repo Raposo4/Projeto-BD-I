@@ -1,32 +1,37 @@
 <?php
+/****codigo para atualizar em hotel****/
+//conecta ao banco
 require_once '../php/connect.php';
 
 if (!empty($_POST)) {
-
   try {
-    // Preparar as informações
+    //recebe o id que vai ser usado na busca
+    $id = $_POST['id'];
+    //recebe o atributo que vai ser usadosna busca
+    $column = $_POST['atributo'];
+    //recebe o valor que vai ser usado na busca
+    $d = $_POST['value_data'];
 
-      $id = $_POST['id'];
-      $column = $_POST['atributo'];
-      $d = $_POST['value_data'];
+    //codigo sql
+    $sql = "UPDATE hotel SET [column] = ?
+            WHERE id_hotel = ?";
 
-      // Montar a SQL (pgsql)
-      $sql = "UPDATE hotel SET [column] = ?
-              WHERE id_hotel = ?";
+    //muda o sql pra usar o atributo recebido em $column
+    $sql = str_replace('[column]', $column, $sql);     
 
-      $sql = str_replace('[column]', $column, $sql);     
+    //prepara e executa o codigo
+    $sth = $pdo->prepare($sql);
+    $sth->bindParam(1, $d); //usa o valor recebido em $d na consulta
+    $sth->bindParam(2, $id); //usa o valor recebido em $id na consulta
 
-      $sth = $pdo->prepare($sql);
-      $sth->bindParam(1, $d);
-      $sth->bindParam(2, $id);
-      if ($sth->execute()) {
-        header("Location: ../html/update_hotel.php?msgSucesso=Atualização realizada com sucesso!");
-      }
+    if ($sth->execute()) {
+        header("Location: ../html/hotel.php?msgSucesso=Atualização realizada com sucesso!");
+    }
 
 
   } catch (PDOException $e) {
       die($e->getMessage());
-      header("Location: ../html/update_hotel.php?msgErro=Falha ao atualizar...");
+      header("Location: ../html/hotel.php?msgErro=Falha ao atualizar...");
   }
 }
 //else {

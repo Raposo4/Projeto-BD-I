@@ -1,22 +1,15 @@
 <?php
-// endereco
-// nome do BD
-// usuario
-// senha
-
+/*********conecta ao banco de dados*********/
+//infos
 $endereco = 'localhost';
 $banco = 'OWLspedagens';
 $usuario = 'postgres';
 $senha = 'paosi';
 
 try {
-  // sgbd:host;port;dbname
-  // usuario
-  // senha
-  // errmode
-  $pdo = new PDO("pgsql:host=$endereco;port=5432;dbname=$banco", $usuario, $senha, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
-  //echo "Conectado no banco de dados!!!";
+  //conecta
+  $pdo = new PDO("pgsql:host=$endereco;port=5432;dbname=$banco", $usuario, $senha, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
 } catch (PDOException $e) {
   echo "Falha ao conectar ao banco de dados. <br/>";
