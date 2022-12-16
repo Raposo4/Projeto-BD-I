@@ -7,7 +7,7 @@ if (!empty($_GET['id'])) {
   try {
       
     //codigo sql
-    $sql = "DELETE FROM uso_da_bike
+    $sql = "DELETE FROM trabalhoowl.uso_da_bike
             WHERE id_bike = :id";
 
     //prepara 

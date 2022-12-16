@@ -8,10 +8,10 @@ if (!empty($_POST)) {
   try {
     
     //codigo sql
-    $sql = "INSERT INTO uso_da_bike
-              (id_bike, cpf_cliente, data_retirada, data_devolucao)
+    $sql = "INSERT INTO trabalhoowl.uso_da_bike
+              (id_bike, id_hotel, cpf_cliente, data_retirada, data_devolucao)
             VALUES
-              (:id_bike, :cpf_cliente, :data_retirada, :data_devolucao)";
+              (:id_bike, :id_hotel, :cpf_cliente, :data_retirada, :data_devolucao)";
 
     //prepara
     $stmt = $pdo->prepare($sql);
@@ -31,6 +31,7 @@ if (!empty($_POST)) {
 
     //coloca os valores no codigo sql
     $stmt->bindValue(":id_bike", $_POST['id_bike'],);
+    $stmt->bindValue(":id_hotel", $_POST['id_hotel'],);
     $stmt->bindValue(":cpf_cliente", $_POST['cpf_cliente']);
     $stmt->bindValue(":data_retirada", $ret);
 

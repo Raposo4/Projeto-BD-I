@@ -12,7 +12,7 @@ if (!empty($_POST)) {
     $d = $_POST['value_data'];
 
     //codigo sql
-    $sql = "SELECT * FROM cliente
+    $sql = "SELECT * FROM trabalhoowl.cliente
             WHERE [column] = ?
             ORDER BY nome ASC";
 
@@ -123,12 +123,17 @@ else {
     <section id="table">
         <form action="../php/process_customer.php" method="post" class="form">
             <div id="input-data">
-                <input id="nome" name="nome" class="input-text" placeholder="Nome" type="text" required />
+            <input id="nome" name="nome" class="input-text" placeholder="Nome" type="text" required />
                 <input id="rg" name="rg" class="input-text" placeholder="RG" type="number" required />
                 <input id="cpf" name="cpf" class="input-text" placeholder="CPF" type="number" required />
-                <!-- <input id="pais" name="pais" class="input-text" placeholder="País" type="text" required />-->
                 <input id="telefone" name="telefone" class="input-text" placeholder="Telefone" type="number" required />
                 <input id="email" name="email" class="input-text" placeholder="Email" type="email" required />
+                <input id="data_nasc" name="data_nasc" class="input-text" placeholder="Data de nascimento" type="date" required />
+                <input id="loc_pais" name="loc_pais" class="input-text" placeholder="País" type="text" required />
+                <input id="loc_estado" name="loc_estado" class="input-text" placeholder="Estado" type="text" required />
+                <input id="loc_cidade" name="loc_cidade" class="input-text" placeholder="Cidade" type="text" required />
+                <input id="endereco" name="endereco" class="input-text" placeholder="Rua" type="text" required />
+                <input id="loc_numero" name="loc_numero" class="input-text" placeholder="Número" type="text" required />
                 <input class="input-btn" type="submit" value="Cadastrar" />
             </div>
         </form>
@@ -137,14 +142,19 @@ else {
     <form action="../html/search_customer.php" method="post" class="form">
         <div id="input-data">
           <select name="atributo" id="atributo" class="input-text">
-                <option value="">Atributo:</option>
+          <option value="">Atributo:</option>
                 <option value="nome">Nome</option>
                 <option value="rg">RG</option>
                 <option value="cpf_cliente">CPF</option>
-                <option value="data_entrada">Data Entrada</option>
+                <option value="data_de_Cadastro">Data Cadastro</option>
+                <option value="data_nasc">Data Nascimento</option>
                 <option value="telefone">Telefone</option>
                 <option value="email">Email</option>
-                <option value="quarto">Quarto</option>
+                <option value="loc_pais">País</option>
+                <option value="loc_estado">Estado</option>
+                <option value="loc_cidade">Cidade</option>
+                <option value="endereco">Rua</option>
+                <option value="loc_numero">Número</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Buscar" />
@@ -155,27 +165,38 @@ else {
         <div id="input-data">
             <input id="id" class="input-text" placeholder="CPF" name="id" type="text" required />
           <select name="atributo" id="atributo" class="input-text">
-                <option value="">Atributo:</option>
+          <option value="">Atributo:</option>
                 <option value="nome">Nome</option>
                 <option value="rg">RG</option>
                 <option value="cpf_cliente">CPF</option>
-                <option value="data_entrada">Data Entrada</option>
+                <option value="data_de_Cadastro">Data Cadastro</option>
+                <option value="data_nasc">Data Nascimento</option>
                 <option value="telefone">Telefone</option>
                 <option value="email">Email</option>
-                <option value="quarto">Quarto</option>
+                <option value="loc_pais">País</option>
+                <option value="loc_estado">Estado</option>
+                <option value="loc_cidade">Cidade</option>
+                <option value="endereco">Rua</option>
+                <option value="loc_numero">Número</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Atualizar" />
         </div>
     </form>
-        <table id="myTable">
+    <table id="myTable">
             <tr id="0">
                 <th>Nome</th>
                 <th>CPF</th>
                 <th>RG</th>
+                <th>Data de Cadastro</th>
+                <th>Data de Nascimento</th>
                 <th>Telefone</th>
                 <th>Email</th>
-                <th>Data de entrada</th>
+                <th>Pais</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Rua</th>
+                <th>Número</th>
                 <th>Excluir</th>
             </tr>
             <?php foreach($tabela as $row) { ?>
@@ -183,9 +204,15 @@ else {
               <td><?php echo $row['nome']; ?></td>
               <td><?php echo $row['cpf_cliente']; ?></td>
               <td><?php echo $row['rg']; ?></td>
+              <td><?php echo $row['data_de_cadastro']; ?></td>
+              <td><?php echo $row['data_nasc']; ?></td>
               <td><?php echo $row['telefone']; ?></td>
               <td><?php echo $row['email']; ?></td>
-              <td><?php echo $row['data_entrada']; ?></td>
+              <td><?php echo $row['loc_pais']; ?></td>
+              <td><?php echo $row['loc_estado']; ?></td>
+              <td><?php echo $row['loc_cidade']; ?></td>
+              <td><?php echo $row['endereco']; ?></td>
+              <td><?php echo $row['loc_numero']; ?></td>
               <td> <a href="../php/delete_customer.php?id=<?php echo $row['cpf_cliente']; ?>">X</a></td> 
               </tr>
             <?php } ?>

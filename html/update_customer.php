@@ -13,7 +13,7 @@ if (!empty($_POST)) {
     $d = $_POST['value_data'];
 
     //codigo sql
-    $sql = "UPDATE cliente SET [column] = ?
+    $sql = "UPDATE trabalhoowl.cliente SET [column] = ?
             WHERE cpf_cliente = ?";
 
     //muda o sql pra usar o atributo recebido em $column
@@ -113,9 +113,14 @@ if (!empty($_POST)) {
                 <input id="nome" name="nome" class="input-text" placeholder="Nome" type="text" required />
                 <input id="rg" name="rg" class="input-text" placeholder="RG" type="number" required />
                 <input id="cpf" name="cpf" class="input-text" placeholder="CPF" type="number" required />
-                <!-- <input id="pais" name="pais" class="input-text" placeholder="País" type="text" required />-->
                 <input id="telefone" name="telefone" class="input-text" placeholder="Telefone" type="number" required />
                 <input id="email" name="email" class="input-text" placeholder="Email" type="email" required />
+                <input id="data_nasc" name="data_nasc" class="input-text" placeholder="Data de nascimento" type="date" required />
+                <input id="loc_pais" name="loc_pais" class="input-text" placeholder="País" type="text" required />
+                <input id="loc_estado" name="loc_estado" class="input-text" placeholder="Estado" type="text" required />
+                <input id="loc_cidade" name="loc_cidade" class="input-text" placeholder="Cidade" type="text" required />
+                <input id="endereco" name="endereco" class="input-text" placeholder="Rua" type="text" required />
+                <input id="loc_numero" name="loc_numero" class="input-text" placeholder="Número" type="text" required />
                 <input class="input-btn" type="submit" value="Cadastrar" />
             </div>
         </form>
@@ -124,14 +129,19 @@ if (!empty($_POST)) {
     <form action="../html/search_customer.php" method="post" class="form">
         <div id="input-data">
           <select name="atributo" id="atributo" class="input-text">
-                <option value="">Atributo:</option>
+          <option value="">Atributo:</option>
                 <option value="nome">Nome</option>
                 <option value="rg">RG</option>
                 <option value="cpf_cliente">CPF</option>
-                <option value="data_entrada">Data Entrada</option>
+                <option value="data_de_Cadastro">Data Cadastro</option>
+                <option value="data_nasc">Data Nascimento</option>
                 <option value="telefone">Telefone</option>
                 <option value="email">Email</option>
-                <option value="quarto">Quarto</option>
+                <option value="loc_pais">País</option>
+                <option value="loc_estado">Estado</option>
+                <option value="loc_cidade">Cidade</option>
+                <option value="endereco">Rua</option>
+                <option value="loc_numero">Número</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Buscar" />
@@ -142,14 +152,19 @@ if (!empty($_POST)) {
         <div id="input-data">
             <input id="id" class="input-text" placeholder="CPF" name="id" type="number" required />
           <select name="atributo" id="atributo" class="input-text">
-                <option value="">Atributo:</option>
+          <option value="">Atributo:</option>
                 <option value="nome">Nome</option>
                 <option value="rg">RG</option>
                 <option value="cpf_cliente">CPF</option>
-                <option value="data_entrada">Data Entrada</option>
+                <option value="data_de_Cadastro">Data Cadastro</option>
+                <option value="data_nasc">Data Nascimento</option>
                 <option value="telefone">Telefone</option>
                 <option value="email">Email</option>
-                <option value="quarto">Quarto</option>
+                <option value="loc_pais">País</option>
+                <option value="loc_estado">Estado</option>
+                <option value="loc_cidade">Cidade</option>
+                <option value="endereco">Rua</option>
+                <option value="loc_numero">Número</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Atualizar" />
@@ -158,12 +173,18 @@ if (!empty($_POST)) {
 
         <table id="myTable">
             <tr id="0">
-                <th>Nome</th>
+            <th>Nome</th>
                 <th>CPF</th>
                 <th>RG</th>
-                <th>Data de entrada</th>
+                <th>Data de Cadastro</th>
+                <th>Data de Nascimento</th>
                 <th>Telefone</th>
                 <th>Email</th>
+                <th>Pais</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+                <th>Rua</th>
+                <th>Número</th>
                 <th>Excluir</th>
             </tr>
         </table>

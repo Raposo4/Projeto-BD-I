@@ -13,7 +13,7 @@ if (!empty($_POST)) {
     $d = $_POST['value_data'];
 
     //codigo sql
-    $sql = "SELECT * FROM uso_da_bike
+    $sql = "SELECT * FROM trabalhoowl.uso_da_bike
             WHERE [column] = ?
             ORDER BY id_bike ASC";
 
@@ -120,7 +120,8 @@ if (!empty($_POST)) {
     <section id="table">
         <form action="../php/process_bike.php" method="post" class="form">
             <div id="input-data">
-                <input id="id_bike" name="id_bike" class="input-text" placeholder="Numero da bike" type="number" required />
+            <input id="id_bike" name="id_bike" class="input-text" placeholder="Numero da bike" type="number" required />
+                <input id="id_hotel" name="id_hotel" class="input-text" placeholder="Id do Hotel" type="number" required />
                 <input id="cpf" name="cpf_cliente" class="input-text" placeholder="CPF do cliente" type="number" required />
                 <input id="data_retirada" name="data_retirada" class="input-text" placeholder="Data de retirada" type="datetime-local" required />
                 <input id="data_devolucao" name="data_devolucao" class="input-text" placeholder="Data de devolução" type="datetime-local"/>
@@ -132,9 +133,10 @@ if (!empty($_POST)) {
     <form action="../html/search_bike.php" method="post" class="form">
         <div id="input-data">
           <select name="atributo" id="atributo" class="input-text">
-                <option value="">Atributo:</option>
-                <option value="id_bike" name="id_bike">Número da bike</option>  
-                <option value="cpf_cliente" name="cpf_cliente">CPF do cliente</option>
+          <option value="">Atributo:</option>
+                <option value="id_bike" name="id_bike">Número da bike</option>
+                <option value="id_hotel" name="id_hotel">Id Hotel</option>
+                <option value="cpf_cliente" name="cpf_clisente">CPF do cliente</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Buscar" />
@@ -145,10 +147,10 @@ if (!empty($_POST)) {
         <div id="input-data">
             <input id="id" class="input-text" placeholder="Número da bicicleta" name="id" type="number" required />
           <select name="atributo" id="atributo" class="input-text">
-                <option value="">Atributo:</option>
-                <option value="cpf_cliente">CPF do cliente</option>
-                <option value="data_retirada">Data de retirada</option>
-                <option value="data_devolucao">Data de devolução</option>
+          <option value="">Atributo:</option>
+                <option value="id_bike" name="id_bike">Número da bike</option>
+                <option value="id_hotel" name="id_hotel">Id Hotel</option>
+                <option value="cpf_cliente" name="cpf_clisente">CPF do cliente</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Atualizar" />
@@ -157,7 +159,8 @@ if (!empty($_POST)) {
 
         <table id="myTable">
             <tr id="0">
-                <th>Número da bibicleta</th>
+            <th>Número da bibicleta</th>
+                <th>Id do hotel</th>
                 <th>CPF do cliente</th>
                 <th>Data de retirada</th>
                 <th>Data de devolução</th>
@@ -166,6 +169,7 @@ if (!empty($_POST)) {
             <?php foreach($tabela as $row) { ?>
               <tr>
               <td><?php echo $row['id_bike']; ?></td>
+              <td><?php echo $row['id_hotel']; ?></td>
               <td><?php echo $row['cpf_cliente']; ?></td>
               <td><?php echo $row['data_retirada']; ?></td>
               <td><?php echo $row['data_devolucao']; ?></td>

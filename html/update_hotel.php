@@ -13,7 +13,7 @@ if (!empty($_POST)) {
     $d = $_POST['value_data'];
 
     //codigo sql
-    $sql = "UPDATE hotel SET [column] = ?
+    $sql = "UPDATE trabalhoowl.hotel SET [column] = ?
             WHERE id_hotel = ?";
 
     //muda o sql pra usar o atributo recebido em $column
@@ -124,28 +124,30 @@ if (!empty($_POST)) {
     <section id="table">
         <form action="../php/process_hotel.php" method="post" class="form">
             <div id="input-data">
+            <input id="cnpj" name="cnpj" class="input-text" placeholder="CNPJ" type="number" required />
                 <input id="name" name="nome_fantasia" class="input-text" placeholder="Nome" type="text" required />
                 <input id="caixa" name="caixa_total" class="input-text" placeholder="Caixa" type="number" min="0.00" max="1000000.00" step="0.01"  required />
+                <input id="area" name="area" class="input-text" placeholder="Area" type="number" required />
                 <input id="Data_Abertura" name="data_abertura" class="input-text" placeholder="Data de abertura" type="date" required />
                 <input id="Pais" name="loc_pais" class="input-text" placeholder="País" type="text" required />
                 <input id="Estado" name="loc_estado" class="input-text" placeholder="Estado" type="text" required />
                 <input id="Cidade" name="loc_cidade" class="input-text" placeholder="Cidade" type="text" required />
                 <input id="Rua" name="loc_complemento" class="input-text" placeholder="Rua" type="text" required />
                 <input id="Número" name="loc_numero" class="input-text" placeholder="Número" type="number" required />
-                <input id="Aluguel" name="valor_aluguel" class="input-text" placeholder="Valor aluguel" type="text" required />
+                <input id="Ticket-medio" name="ticket_medio" class="input-text" placeholder="Ticket-medio" type="number" required />
                 <input id="Funcionarios" name="num_funcionarios" class="input-text" placeholder="Número funcionários" type="number" required />
                 <input id="Clientes" name="num_hospedes" class="input-text" placeholder="Número hospedes" type="number" required />
                 <input id="Ocupacao-Max" name="ocupacao_maxima" class="input-text" placeholder="Ocupação Máxima" type="number" required />
+                <input id="Tipo" name="tipo" class="input-text" placeholder="Tipo" type="text" required />
                 <input id="Categoria" name="categoria" class="input-text" placeholder="Categoria" type="text" required />
-                <select name="possui_cafe" id="Cafe" class="input-text">
                     <option value="">Tem café?</option>
-                    <option value="T">Sim</option>
-                    <option value="F">Não</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
                   </select>
                  <select name="possui_wifi" id="Wifi" class="input-text">
                     <option value="">Tem wifi?</option>
-                    <option value="T">Sim</option>
-                    <option value="F">Não</option>
+                    <option value="S">Sim</option>
+                    <option value="N">Não</option>
                   </select> 
                 <input class="input-btn" type="submit" value="Enviar" />
             </div>
@@ -154,21 +156,23 @@ if (!empty($_POST)) {
         <form action="../html/search_hotel.php" method="post" class="form">
             <div id="input-data">
               <select name="atributo" id="Atributo" class="input-text">
-                    <option value="">Atributo:</option>
+              <option value="">Atributo:</option>
                     <option value="nome_fantasia">Nome</option>
                     <option value="caixa_total">Caixa</option>
+                    <option value="area">Area</option>
                     <option value="data_abertura">Data de abertura</option>
                     <option value="loc_cidade">Cidade</option>
                     <option value="loc_estado">Estado</option>
                     <option value="loc_pais">País</option>
                     <option value="loc_numero">Número</option>
                     <option value="loc_complemento">Rua</option>
-                    <option value="valor_aluguel">Aluguel</option>
+                    <option value="ticket_medio">Ticket-medio</option>
                     <option value="num_funcionarios">Num Funcionários</option>
                     <option value="num_hospedes">Num Hospedes</option>
                     <option value="ocupacao_maxima">Ocupação</option>
                     <option value="possui_cafe">Café?</option>
                     <option value="possui_wifi">Wifi?</option>
+                    <option value="tipo">Tipo</option>
                     <option value="categoria">Categoria</option>
                   </select> 
                   <input id="valor" name="value_data" class="input-text" placeholder="Valor" type="text" required />
@@ -180,21 +184,23 @@ if (!empty($_POST)) {
             <div id="input-data">
             <input id="id" class="input-text" placeholder="Id" name="id" type="text" required />
               <select name="atributo" id="Atributo" class="input-text">
-                    <option value="">Atributo:</option>
+              <option value="">Atributo:</option>
                     <option value="nome_fantasia">Nome</option>
                     <option value="caixa_total">Caixa</option>
+                    <option value="area">Area</option>
                     <option value="data_abertura">Data de abertura</option>
                     <option value="loc_cidade">Cidade</option>
                     <option value="loc_estado">Estado</option>
                     <option value="loc_pais">País</option>
                     <option value="loc_numero">Número</option>
                     <option value="loc_complemento">Rua</option>
-                    <option value="valor_aluguel">Aluguel</option>
+                    <option value="ticket_medio">Ticket-medio</option>
                     <option value="num_funcionarios">Num Funcionários</option>
                     <option value="num_hospedes">Num Hospedes</option>
                     <option value="ocupacao_maxima">Ocupação</option>
                     <option value="possui_cafe">Café?</option>
                     <option value="possui_wifi">Wifi?</option>
+                    <option value="tipo">Tipo</option>
                     <option value="categoria">Categoria</option>
                   </select> 
                   <input id="valor" name="value_data" class="input-text" placeholder="Valor" type="text" required />
@@ -204,19 +210,22 @@ if (!empty($_POST)) {
 
         <table id="myTable">
             <tr id="0">
-            <th>ID</th>
+                <th>ID</th>
+                <th>CNPJ</th>
                 <th>Nome</th>
                 <th>Caixa</th>
+                <th>Area</th>
                 <th>Data Abertura</th>
                 <th>Pais</th>
                 <th>Estado</th>
                 <th>Cidade</th>
                 <th>Rua</th>
                 <th>Número</th>
-                <th>Aluguel</th>
+                <th>Ticket-medio</th>
                 <th>Funcionarios</th>
                 <th>Hóspedes</th>
                 <th>Ocupação máxima</th>
+                <th>Tipo</th>
                 <th>Categoria</th>
                 <th>Café</th>
                 <th>Wifi</th>

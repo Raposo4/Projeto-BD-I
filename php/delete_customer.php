@@ -7,7 +7,7 @@ if (!empty($_GET['id'])) {
   try {
 
     //codigo sql
-    $sql = "DELETE FROM cliente
+    $sql = "DELETE FROM trabalhoowl.cliente
             WHERE cpf_cliente = :id";
 
     //prepara 

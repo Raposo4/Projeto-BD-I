@@ -7,20 +7,22 @@ if (!empty($_POST)) {
   try {
     
     //codigo sql
-    $sql = "INSERT INTO hotel
-              (nome_fantasia, caixa_total, data_abertura, loc_cidade, loc_estado, loc_pais, loc_numero, loc_complemento,
-                valor_aluguel, num_funcionarios, num_hospedes, ocupacao_maxima, possui_cafe, possui_wifi, categoria)
+    $sql = "INSERT INTO trabalhoowl.hotel 
+              (cnpj, nome_fantasia, area, caixa_total, data_abertura, loc_cidade, loc_estado, loc_pais, loc_numero, loc_complemento,
+                ticket_medio, num_funcionarios, num_hospedes, ocupacao_maxima, possui_cafe, possui_wifi, tipo, categoria)
             VALUES
-            (:nome_fantasia, :caixa_total, :data_abertura, :loc_cidade, :loc_estado, :loc_pais, :loc_numero, :loc_complemento,
-              :valor_aluguel, :num_funcionarios, :num_hospedes, :ocupacao_maxima, :possui_cafe,
-                :possui_wifi, :categoria)";
+            (:cnpj, :nome_fantasia, :area, :caixa_total, :data_abertura, :loc_cidade, :loc_estado, :loc_pais, :loc_numero, :loc_complemento,
+              :ticket_medio, :num_funcionarios, :num_hospedes, :ocupacao_maxima, :possui_cafe,
+                :possui_wifi, :tipo, :categoria)";
 
     //prepara
     $stmt = $pdo->prepare($sql);
 
     //pega os dados do post para o codigo
     $dados = array(
+      ':cnpj' => $_POST['cnpj'],
       ':nome_fantasia' => $_POST['nome_fantasia'],
+      ':area' => $_POST['area'],
       ':caixa_total' => $_POST['caixa_total'],
       ':data_abertura' => $_POST['data_abertura'],
       ':loc_cidade' => $_POST['loc_cidade'],
@@ -28,12 +30,13 @@ if (!empty($_POST)) {
       ':loc_pais' => $_POST['loc_pais'],
       ':loc_numero' => $_POST['loc_numero'],
       ':loc_complemento' => $_POST['loc_complemento'],
-      ':valor_aluguel' => $_POST['valor_aluguel'],
+      ':ticket_medio' => $_POST['ticket_medio'],
       ':num_funcionarios' => $_POST['num_funcionarios'],
       ':num_hospedes' => $_POST['num_hospedes'],
       ':ocupacao_maxima' => $_POST['ocupacao_maxima'],
       ':possui_cafe' => $_POST['possui_cafe'],
       ':possui_wifi' => $_POST['possui_wifi'],
+      ':tipo' => $_POST['tipo'],
       ':categoria' => $_POST['categoria'],
     );
 
