@@ -43,8 +43,13 @@ if (!empty($_POST)) {
         ':data_retirada' => $ret,
       );
 
+      $stmt->bindValue(":id_bike", $_POST['id_bike'],);
+      $stmt->bindValue(":cpf_cliente", $_POST['cpf_cliente']);
+      $stmt->bindValue(":data_retirada", $ret);
+
+
       if(empty($_POST['data_devolucao'])){
-      $stmt->bindValue(":data_devolucao", null, PDO::PARAM_NULL);
+        $stmt->bindValue(":data_devolucao", null);
       }else
       {
         $stmt->bindValue(":data_devolucao", $dev);
@@ -52,7 +57,7 @@ if (!empty($_POST)) {
 
       // Tentar Executar a SQL (INSERT)
       // Realizar a inserção das informações no BD (com o PHP)
-      if ($stmt->execute($dados)) {
+      if ($stmt->execute()) {
         header("Location: ../html/bike.php?msgSucesso=Cadastro realizado com sucesso!");
       }
   } catch (PDOException $e) {

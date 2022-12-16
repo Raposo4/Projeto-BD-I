@@ -1,3 +1,49 @@
+<?php
+require_once '../php/connect.php';
+// Definir o BD (e a tabela)
+// Conectar ao BD (com o PHP)
+
+/*
+echo '<pre>';
+print_r($_POST);
+echo '</pre>';
+*/
+
+if (!empty($_POST)) {
+  // Está chegando dados por POST e então posso tentar inserir no banco
+  // Obter as informações do formulário ($_POST)
+  try {
+    // Preparar as informações
+
+      $column = $_POST['atributo'];
+      $d = $_POST['value_data'];
+
+      // Montar a SQL (pgsql)
+      $sql = "SELECT * FROM uso_da_bike
+              WHERE [column] = ?
+              ORDER BY id_bike ASC";
+
+      $sql = str_replace('[column]', $column, $sql);     
+
+      $sth = $pdo->prepare($sql);
+      $sth->bindParam(1, $d);
+      $sth->execute();
+
+      $tabela = $sth->fetchall(PDO::FETCH_ASSOC);
+
+
+  } catch (PDOException $e) {
+      die($e->getMessage());
+      header("Location: ../html/search_bike.php?msgErro=Falha ao buscar...");
+  }
+}
+//else {
+  //header("Location: ../html/search_bike.php?msgErro=Erro de acesso.");
+//} 
+
+// Redirecionar para a página inicial (login) c/ mensagem erro/sucesso
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -96,8 +142,8 @@
         <div id="input-data">
           <select name="atributo" id="atributo" class="input-text">
                 <option value="">Atributo:</option>
-                <option value="id_bike" name="id_bike">Número da bike</option>
-                <option value="cpf_cliente" name="cpf_clisente">CPF do cliente</option>
+                <option value="id_bike" name="id_bike">Número da bike</option>  
+                <option value="cpf_cliente" name="cpf_cliente">CPF do cliente</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Buscar" />
@@ -126,6 +172,15 @@
                 <th>Data de devolução</th>
                 <th>Excluir</th>
             </tr>
+            <?php foreach($tabela as $row) { ?>
+              <tr>
+              <td><?php echo $row['id_bike']; ?></td>
+              <td><?php echo $row['cpf_cliente']; ?></td>
+              <td><?php echo $row['data_retirada']; ?></td>
+              <td><?php echo $row['data_devolucao']; ?></td>
+              <td> <a href="../php/delete_bike.php?id=<?php echo $row['id_bike']; ?>">X</a></td> 
+              </tr>
+            <?php } ?>
         </table>
     </section>
 </body>
