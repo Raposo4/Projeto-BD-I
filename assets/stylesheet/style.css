@@ -29,14 +29,13 @@ html {
 /* --------------------------- Form --------------------------- */
 .form{
     background-color: #760000;
-    margin-top: -49px;
+    
 }
 
 #input-data {
     width: 90vw;
     font-family: Ubuntu;
     margin: 0 auto;
-    margin-top: 5vh;
     display: block;
 }
 
@@ -125,9 +124,20 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
+a:link, a:visited {
+  	text-decoration: none;
+  color: black;
+	}
+a:hover {
+	color: #f00
+	}
+a:active {
+	text-decoration: none
+	}
+
 
 /* --------------------------- Menu-Dropdown --------------------------- */
-body {
+body { 
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   flex-direction: column;
@@ -184,7 +194,7 @@ body {
 .dropdown-content a {
   float: none;
   color: #760000;
-  padding: 12px 16px;
+  padding: 6px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
