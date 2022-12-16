@@ -96,6 +96,16 @@ if (!empty($_POST)) {
             </div>
         </div>
         <div class="dropdown">
+            <button class="dropbtn">Serviços
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <a href="#">Piscina</a>
+                <a href="bike.php">Bicicletário</a>
+                <a href="#">Lavagem de carro</a>
+            </div>
+        </div>
+        <div class="dropdown">
             <button class="dropbtn" onclick="location.href='cliente.php';">Clientes</button>
         </div>
         <div class="dropdown">

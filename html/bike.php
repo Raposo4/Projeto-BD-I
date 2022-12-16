@@ -30,7 +30,7 @@
             <img src="../imgs/logo.png" href="index.php" />
         </div>
         <div id="nav">
-            Owlspedagem PET-SI - Clientes
+            Owlspedagem PET-SI - Bicicletário
         </div>
     </div>
     <div class="navbar">
@@ -81,48 +81,39 @@
     
     
     <section id="table">
-        <form action="../php/process_customer.php" method="post" class="form">
+        <form action="../php/process_bike.php" method="post" class="form">
             <div id="input-data">
-                <input id="nome" name="nome" class="input-text" placeholder="Nome" type="text" required />
-                <input id="rg" name="rg" class="input-text" placeholder="RG" type="number" required />
-                <input id="cpf" name="cpf" class="input-text" placeholder="CPF" type="number" required />
-                <!-- <input id="pais" name="pais" class="input-text" placeholder="País" type="text" required />-->
-                <input id="telefone" name="telefone" class="input-text" placeholder="Telefone" type="number" required />
-                <input id="email" name="email" class="input-text" placeholder="Email" type="email" required />
+                <input id="id_bike" name="id_bike" class="input-text" placeholder="Numero da bike" type="number" required />
+                <input id="cpf" name="cpf_cliente" class="input-text" placeholder="CPF do cliente" type="number" required />
+                <input id="data_retirada" name="data_retirada" class="input-text" placeholder="Data de retirada" type="datetime-local" required />
+                <input id="data_devolucao" name="data_devolucao" class="input-text" placeholder="Data de devolução" type="datetime-local"/>
                 <input class="input-btn" type="submit" value="Cadastrar" />
             </div>
         </form>
 
     </br>
-    <form action="../html/search_customer.php" method="post" class="form">
+    <form action="../html/search_bike.php" method="post" class="form">
         <div id="input-data">
           <select name="atributo" id="atributo" class="input-text">
                 <option value="">Atributo:</option>
-                <option value="nome">Nome</option>
-                <option value="rg">RG</option>
-                <option value="cpf_cliente">CPF</option>
-                <option value="data_entrada">Data Entrada</option>
-                <option value="telefone">Telefone</option>
-                <option value="email">Email</option>
-                <option value="quarto">Quarto</option>
+                <option value="nome">Número da bike</option>
+                <option value="cpg">CPF do cliente</option>
+                <option value="aro">Aro</option>
+                <option value="cor">Cor</option>
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Buscar" />
         </div>
     </form>
     </br>
-    <form action="../html/update_customer.php" method="post" class="form">
+    <form action="../html/update_bike.php" method="post" class="form">
         <div id="input-data">
-            <input id="id" class="input-text" placeholder="CPF" name="id" type="number" required />
+            <input id="id" class="input-text" placeholder="Número da bicicleta" name="id" type="number" required />
           <select name="atributo" id="atributo" class="input-text">
                 <option value="">Atributo:</option>
-                <option value="nome">Nome</option>
-                <option value="rg">RG</option>
-                <option value="cpf_cliente">CPF</option>
-                <option value="data_entrada">Data Entrada</option>
-                <option value="telefone">Telefone</option>
-                <option value="email">Email</option>
-                <option value="quarto">Quarto</option>
+                <option value="cpf_cliente">CPF do cliente</option>
+                <option value="data_retirada">Data de retirada</option>
+                <option value="data_devolucao">Data de devolução</option
               </select> 
               <input id="valor" class="input-text" placeholder="Valor" name="value_data" type="text" required />
             <input class="input-btn" type="submit" value="Atualizar" />
@@ -131,12 +122,10 @@
 
         <table id="myTable">
             <tr id="0">
-                <th>Nome</th>
-                <th>RG</th>
-                <th>CPF</th>
-                <th>Data de entrada</th>
-                <th>Telefone</th>
-                <th>Email</th>
+                <th>Número da bibicleta</th>
+                <th>CPF do cliente</th>
+                <th>Data de retirada</th>
+                <th>Data de devolução</th>
                 <th>Excluir</th>
             </tr>
         </table>
